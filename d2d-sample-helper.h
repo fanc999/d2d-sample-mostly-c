@@ -15,9 +15,11 @@
 extern "C" {
 #endif
 
-void
-ID2D1HwndRenderTarget_CppGetSize (ID2D1HwndRenderTarget *render_target,
-                                  D2D1_SIZE_F           *size);
+/* sigh, the C interface for this function is broken... */
+#undef ID2D1HwndRenderTarget_GetSize
+
+D2D1_SIZE_F
+ID2D1HwndRenderTarget_GetSize (ID2D1HwndRenderTarget *render_target);
 
 #ifdef __cplusplus
 }

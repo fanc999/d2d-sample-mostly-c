@@ -1,3 +1,4 @@
+/* fix some broken D2D C-interfaces... */
 #include "d2d-sample-helper.h"
 
 #include <stdio.h>
@@ -171,7 +172,7 @@ HRESULT DemoApp_OnRender (d2dobj *obj)
       ID2D1HwndRenderTarget_BeginDraw (obj->hwnd_render_target);
       ID2D1HwndRenderTarget_SetTransform (obj->hwnd_render_target, &identity);
       ID2D1HwndRenderTarget_Clear (obj->hwnd_render_target, &white);
-      ID2D1HwndRenderTarget_CppGetSize (obj->hwnd_render_target, &rtSize); /* We need C++ to help us */
+      rtSize = ID2D1HwndRenderTarget_GetSize (obj->hwnd_render_target); /* We need C++ to help us, sigh... */
 
       /* Draw a grid background. */
       width = (int)rtSize.width;
